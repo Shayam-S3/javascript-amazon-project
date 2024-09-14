@@ -1,7 +1,10 @@
+import { cart, addToCart } from '../data/cart.js';
+import { products } from '../data/products.js';
+
 let productsHTML = '';
 
 products.forEach((product) => {
-    productsHTML += `<div class="product-container">
+  productsHTML += `<div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
               src=${product.image}>
@@ -54,48 +57,38 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML
 
+function updateCartQuantity() {
+  let cartQuantity = 0;
+  cart.forEach((item) => {
+    cartQuantity += item.quantity
+  })
+
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+}
+
+function updateMessage(productId) {
+  let addedMessageTimeoutId;
+  const addedMessage = document.querySelector(`.js-added-${productId}`)
+  addedMessage.classList.add('added-to-cart-visible');
+
+  // Check if a previous timeoutId exists. If it does,
+  // we will stop it.
+  if (addedMessageTimeoutId) {
+    clearTimeout(addedMessageTimeoutId);
+  }
+
+  const timeoutId = setTimeout(() => {
+    addedMessage.classList.remove('added-to-cart-visible');
+  }, 2000);
+  addedMessageTimeoutId = timeoutId;
+}
+
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
-    let addedMessageTimeoutId;
-    button.addEventListener('click', () => {
-        const { productId } = button.dataset;
 
-        let matchingItem;
-        cart.forEach((item) => {
-            if (productId === item.productId) {
-                matchingItem = item;
-            }
-        })
-
-        const quantity = Number((document.querySelector(`.js-quantity-selector-${productId}`)).value);
-
-        if (matchingItem) {
-            matchingItem.quantity += quantity;
-        }
-        else {
-            cart.push({
-                productId,
-                quantity
-            })
-        }
-
-        let cartQuantity = 0;
-        cart.forEach((item) => {
-            cartQuantity += item.quantity
-        })
-
-        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
-        const addedMessage = document.querySelector(`.js-added-${productId}`)
-        addedMessage.classList.add('added-to-cart-visible');
-
-        // Check if a previous timeoutId exists. If it does,
-        // we will stop it.
-        if (addedMessageTimeoutId) {
-            clearTimeout(addedMessageTimeoutId);
-        }
-
-        const timeoutId = setTimeout(() => {
-            addedMessage.classList.remove('added-to-cart-visible');
-        }, 2000);
-        addedMessageTimeoutId = timeoutId;
-    })
+  button.addEventListener('click', () => {
+    const { productId } = button.dataset;
+    addToCart(productId);
+    updateCartQuantity();
+    updateMessage(productId);
+  })
 })
