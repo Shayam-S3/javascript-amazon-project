@@ -38,14 +38,36 @@ describe("test suite: renderOrderSummary", () => {
         expect(document.querySelectorAll('.js-cart-item-container').length).toEqual(2);
         expect(document.querySelector(`.js-product-quantity-${productId1}`).innerText).toContain('Quantity: 2');
         expect(document.querySelector(`.js-product-quantity-${productId2}`).innerText).toContain('Quantity: 3');
+        expect(document.querySelector(`.js-product-name-${productId1}`).innerText).toEqual('Intermediate Size Basketball');
+        expect(document.querySelector(`.js-product-name-${productId2}`).innerText).toEqual('Adults Plain Cotton T-Shirt - 2 Pack');
     });
 
     it("removes a product", () => {
+
         document.querySelector(`.js-delete-link-${productId1}`).click();
         expect(document.querySelectorAll('.js-cart-item-container').length).toEqual(1);
-        expect(document.querySelector(`.js-cart-item-container-${productId1}`)).toEqual(null);
-        expect(document.querySelector(`.js-cart-item-container-${productId2}`)).not.toEqual(null);
+        expect(document.querySelector(`.js-cart-item-container-${productId1}`)).toBeNull();
+        expect(document.querySelector(`.js-cart-item-container-${productId2}`)).not.toBeNull();
+        expect(document.querySelector(`.js-product-name-${productId2}`).innerText).toEqual('Adults Plain Cotton T-Shirt - 2 Pack');
         expect(cart.length).toEqual(1);
         expect(cart[0].productId).toEqual(productId2);
-    })
+    });
+
+
+    it("updates the delivery option", () => {
+        document.querySelector(`.js-delivery-option-${productId1}-3`).click();
+        
+        expect(document.querySelector(`.js-delivery-option-input-${productId1}-3`).checked).toEqual(true);
+        expect(cart.length).toEqual(2);
+        expect(cart[0].productId).toEqual(productId1);
+        expect(cart[0].deliveryOptionId).toEqual('3');
+        expect(
+            document.querySelector('.js-payment-summary-shipping').innerText
+        ).toEqual('$14.98');
+        expect(
+            document.querySelector('.js-payment-summary-total').innerText
+        ).toEqual('$88.94');
+
+    });
+
 });

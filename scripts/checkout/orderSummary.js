@@ -13,7 +13,7 @@ export function renderOrderSummary() {
     cart.forEach((cartItem) => {
         const productId = cartItem.productId;
 
-        const matchingProdut = getProduct(productId);
+        const matchingProduct = getProduct(productId);
 
 
         const deliveryOptionId = cartItem.deliveryOptionId;
@@ -24,32 +24,32 @@ export function renderOrderSummary() {
 
         cartSummaryHTML += `<div class="cart-item-container
         js-cart-item-container 
-    js-cart-item-container-${matchingProdut.id}">
+    js-cart-item-container-${matchingProduct.id}">
             <div class="delivery-date">
               Delivery date: ${dateString}
             </div>
 
             <div class="cart-item-details-grid">
               <img class="product-image"
-                src="${matchingProdut.image}">
+                src="${matchingProduct.image}">
 
               <div class="cart-item-details">
-                <div class="product-name">
-                  ${matchingProdut.name};
+                <div class="product-name js-product-name-${matchingProduct.id}">
+                  ${matchingProduct.name}
                 </div>
                 <div class="product-price">
-                  $${formatCurrency(matchingProdut.priceCents)}
+                  $${formatCurrency(matchingProduct.priceCents)}
                 </div>
-                <div class="product-quantity js-product-quantity-${matchingProdut.id}">
+                <div class="product-quantity js-product-quantity-${matchingProduct.id}">
                   <span>
-                    Quantity: <span class="quantity-label js-quantity-label-${matchingProdut.id}">${cartItem.quantity}</span>
+                    Quantity: <span class="quantity-label js-quantity-label-${matchingProduct.id}">${cartItem.quantity}</span>
                   </span>
-                  <span class="update-quantity-link link-primary js-update-link" data-product-id="${matchingProdut.id}">
+                  <span class="update-quantity-link link-primary js-update-link" data-product-id="${matchingProduct.id}">
                     Update
                   </span>
-                  <input class="quantity-input js-quantity-input-${matchingProdut.id}">
-                  <span class="save-quantity-link link-primary js-save-link" data-product-id="${matchingProdut.id}">Save</span>
-                  <span class="delete-quantity-link link-primary js-delete-link js-delete-link-${matchingProdut.id}" data-product-id="${matchingProdut.id}">
+                  <input class="quantity-input js-quantity-input-${matchingProduct.id}">
+                  <span class="save-quantity-link link-primary js-save-link" data-product-id="${matchingProduct.id}">Save</span>
+                  <span class="delete-quantity-link link-primary js-delete-link js-delete-link-${matchingProduct.id}" data-product-id="${matchingProduct.id}">
                     Delete
                   </span>
                 </div>
@@ -59,13 +59,13 @@ export function renderOrderSummary() {
                 <div class="delivery-options-title">
                   Choose a delivery option:
                 </div>
-                ${deliveryOptionsHTML(matchingProdut, cartItem)}
+                ${deliveryOptionsHTML(matchingProduct, cartItem)}
               </div>
             </div>
           </div>`;
     });
 
-    function deliveryOptionsHTML(matchingProdut, cartItem) {
+    function deliveryOptionsHTML(matchingProduct, cartItem) {
         let deliveryHTML = '';
         deliveryOptions.forEach((deliveryOption) => {
 
@@ -73,19 +73,25 @@ export function renderOrderSummary() {
             const priceString = deliveryOption.priceCents === 0 ? 'Free Shipping' : `$${formatCurrency(deliveryOption.priceCents)} -`;
             const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
-            deliveryHTML += `<div class="delivery-option js-delivery-option" data-product-id="${matchingProdut.id}" data-delivery-option-id="${deliveryOption.id}">
-            <input type="radio" ${isChecked ? 'checked' : ''} 
-            class="delivery-option-input"
-                    name="delivery-option-1">
-            <div>
-                <div class="delivery-option-date">
-                    ${dateString}
-                </div>
-                <div class="delivery-option-price">
-                    ${priceString} Shipping
-                </div>
+            deliveryHTML += `<div class="delivery-option js-delivery-option
+          js-delivery-option-${matchingProduct.id}-${deliveryOption.id}"
+          data-product-id="${matchingProduct.id}"
+          data-delivery-option-id="${deliveryOption.id}">
+          <input type="radio"
+            ${isChecked ? 'checked' : ''}
+            class="delivery-option-input
+            js-delivery-option-input-${matchingProduct.id}-${deliveryOption.id}"
+            name="delivery-option-${matchingProduct.id}">
+          <div>
+            <div class="delivery-option-date">
+              ${dateString}
             </div>
-        </div>`
+            <div class="delivery-option-price">
+              ${priceString} Shipping
+            </div>
+          </div>
+        </div>
+      `
         });
         return deliveryHTML
     }
