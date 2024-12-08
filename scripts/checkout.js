@@ -5,11 +5,21 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 
 // import '../data/backend-practice.js';
 
-loadProductsFetch().then(() => {
+async function loadPage() {
+    await loadProductsFetch();
+
     renderCheckoutHeader();
     renderOrderSummary();
     renderPaymentSummary();
-});
+}
+
+loadPage();
+
+// loadProductsFetch().then(() => {
+//     renderCheckoutHeader();
+//     renderOrderSummary();
+//     renderPaymentSummary();
+// });
 
 // loadProducts(() => {
 //     renderCheckoutHeader();
