@@ -1,0 +1,34 @@
+<html>
+
+<body>
+    <script>
+        async function getGreeting() {
+            try {
+                const response = await fetch('https://supersimplebackend.dev/greeting', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: "shayam"
+                    })
+                });
+                if(response.status>=400){
+                    throw response;
+                }
+                const text = await response.text();
+                console.log(text);
+            } catch (error) {
+                if(error.status===400){
+                    const erroMessage = await error.json()
+                    console.log(erroMessage);
+                }
+                console.log('CORS Error. Your request was blocked by the backend');
+            }
+        }
+        getGreeting();
+
+    </script>
+</body>
+
+</html>

@@ -84,9 +84,14 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
         }
     });
 
-    if (!matchingItem){
+    if (!matchingItem) {
         return;
     }
     matchingItem.deliveryOptionId = deliveryOptionId;
     saveToStorage();
+}
+
+export function resetCart() {
+    cart = [];
+    saveToStorage(cart);
 }
