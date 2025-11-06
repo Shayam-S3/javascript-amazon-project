@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday Sruthi 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#ff9a9e; --bg2:#fecfef; --accent:#FFD166; --accent-2:#06D6A0; --card:#ffffffee;
+    }
+    html,body{height:100%;margin:0;font-family:Montserrat,system-ui,Segoe UI,Roboto,Arial;color:#222}
+    body{background:linear-gradient(135deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
+
+    .card{
+      width:100%;max-width:920px;background:var(--card);border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,0.12);overflow:hidden;position:relative;
+      display:grid;grid-template-columns:1fr 420px;gap:0;align-items:stretch;
+      animation:fadeIn 1.5s ease-out;
+    }
+
+    @keyframes fadeIn{0%{opacity:0;transform:scale(0.95)}100%{opacity:1;transform:scale(1)}}
+
+    .left{padding:40px 36px 48px 48px}
+    .right{background:linear-gradient(180deg,#ffe6f0, #fff8f3);padding:26px;display:flex;flex-direction:column;gap:12px;justify-content:center;align-items:center}
+
+    h1{font-family:Pacifico, cursive;font-size:46px;margin:6px 0 8px;color:#ff3d8a;text-shadow:0 6px 18px rgba(255,77,138,0.12);animation:pop 2s ease infinite alternate}
+    @keyframes pop{0%{transform:scale(1)}100%{transform:scale(1.05)}}
+
+    .subtitle{font-weight:600;color:#ff6b97;margin-bottom:18px;font-size:20px}
+    p.lead{margin:0 0 22px;line-height:1.6;color:#5b5b5b;font-size:18px;animation:fadeUp 2s ease-out}
+
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+
+    .confetti-tip{font-size:13px;color:#666;margin-top:8px}
+
+    /* Right panel playful graphics */
+    .balloon-wrap{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+    .balloon{position:absolute;border-radius:50%;width:84px;height:110px;display:flex;align-items:flex-end;justify-content:center}
+    .balloon:after{content:"";width:2px;height:60px;background:linear-gradient(#555, #222);position:absolute;bottom:-48px;border-radius:2px}
+
+    .b1{background:linear-gradient(180deg,#FFD9D9,#FF97C2);left:10%;animation:float 4s ease-in-out infinite}
+    .b2{background:linear-gradient(180deg,#FFF3B0,#FFD166);right:4%;bottom:8%;width:66px;height:86px;animation:float 5s ease-in-out infinite .3s}
+    .b3{background:linear-gradient(180deg,#B7F8DB,#06D6A0);left:36%;bottom:6%;width:98px;height:128px;animation:float 5.4s ease-in-out infinite .7s}
+    .b4{background:linear-gradient(180deg,#A0C4FF,#5B8BFF);right:26%;top:18%;width:74px;height:102px;animation:float 4.8s ease-in-out infinite .4s}
+
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+
+    canvas#confetti-canvas{position:absolute;inset:0;pointer-events:none}
+
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;}
+      .right{order:-1;padding:20px}
+      h1{font-size:36px}
+    }
+
+    footer.credit{font-size:12px;color:#6a6a6a;text-align:center;padding:12px}
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <canvas id="confetti-canvas"></canvas>
+    <div class="left">
+      <h1>Happy Birthday Sruthi 🎂</h1>
+      <div class="subtitle">Wishing you endless smiles and sparkles today!</div>
+      <p class="lead">Hey Sruthi — may your day be filled with laughter, colorful memories, sweet cakes, and all the joy your heart can hold. You make life brighter just by being you! 💖✨</p>
+      <p class="lead">Keep smiling, keep shining, and may all your dreams come true. Have a fabulous birthday celebration with lots of love and happiness! 🎉🎈</p>
+      <footer class="credit">Made with ❤️ just for you, Sruthi!</footer>
+    </div>
+
+    <div class="right" aria-hidden="true">
+      <div class="balloon-wrap">
+        <div class="balloon b1"></div>
+        <div class="balloon b2"></div>
+        <div class="balloon b3"></div>
+        <div class="balloon b4"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    function fitCanvas(){canvas.width=canvas.clientWidth;canvas.height=canvas.clientHeight}
+    window.addEventListener('resize', fitCanvas); fitCanvas();
+
+    function random(min,max){return Math.random()*(max-min)+min}
+    function burst(){
+      const pieces = [];
+      const colors = ['#FF6B97','#FFD166','#06D6A0','#5B8BFF','#FFB085','#C28EFF'];
+      const cx = canvas.width/2, cy = canvas.height/3;
+      for(let i=0;i<140;i++){
+        pieces.push({x:cx,y:cy,vx:random(-6,6),vy:random(-12,2),size:random(6,14),col:colors[Math.floor(Math.random()*colors.length)],rot:random(0,360),vr:random(-6,6)})
+      }
+      let t=0; const duration=2200;
+      function frame(){
+        t+=16; ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(const p of pieces){
+          p.x += p.vx; p.y += p.vy; p.vy += 0.35; p.rot += p.vr;
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+          ctx.fillStyle=p.col; ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+          ctx.restore();
+        }
+        if(t<duration) requestAnimationFrame(frame); else ctx.clearRect(0,0,canvas.width,canvas.height)
+      }
+      requestAnimationFrame(frame);
+    }
+
+    setTimeout(()=>{burst();},1000);
+    setInterval(()=>{burst();},5000);
+  </script>
+</body>
+</html>
