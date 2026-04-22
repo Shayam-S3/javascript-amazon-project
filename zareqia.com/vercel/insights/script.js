@@ -36,7 +36,7 @@
             e[`${t}Endpoint`] ||
             ("endpoint" in e
               ? `${e.endpoint}/${t}`
-              : `${null != i && i.src.includes("/va/") ? "/va" : "/vercel/insights"}/${t}`)
+              : `${null != i && i.src.includes("/va/") ? "/va" : "/javascript-amazon-project/zareqia.com/vercel/insights"}/${t}`)
           );
         }
         async function h(e) {
