@@ -1,0 +1,168 @@
+{
+  "source": "/Users/shayamsundar/Downloads/photo",
+  "count": 8,
+  "recommended_for_slider": [
+    "/gallery-optimized/01-copy-of-0c0a9886-1200.jpg",
+    "/gallery-optimized/02-copy-of-0c0a9888-1200.jpg",
+    "/gallery-optimized/03-copy-of-0c0a9894-1200.jpg",
+    "/gallery-optimized/04-copy-of-9a4a5651-1200.jpg",
+    "/gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
+    "/gallery-optimized/06-img-5755-1200.jpg",
+    "/gallery-optimized/07-img-5795-1200.jpg",
+    "/gallery-optimized/08-img-6033-1200.jpg"
+  ],
+  "images": [
+    {
+      "id": "01-copy-of-0c0a9886",
+      "original": "/Users/shayamsundar/Downloads/photo/Copy of 0C0A9886.JPG",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/01-copy-of-0c0a9886-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/01-copy-of-0c0a9886-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/01-copy-of-0c0a9886-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/01-copy-of-0c0a9886-1200.jpg"
+    },
+    {
+      "id": "02-copy-of-0c0a9888",
+      "original": "/Users/shayamsundar/Downloads/photo/Copy of 0C0A9888.JPG",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/02-copy-of-0c0a9888-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/02-copy-of-0c0a9888-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/02-copy-of-0c0a9888-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/02-copy-of-0c0a9888-1200.jpg"
+    },
+    {
+      "id": "03-copy-of-0c0a9894",
+      "original": "/Users/shayamsundar/Downloads/photo/Copy of 0C0A9894.JPG",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/03-copy-of-0c0a9894-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/03-copy-of-0c0a9894-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/03-copy-of-0c0a9894-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/03-copy-of-0c0a9894-1200.jpg"
+    },
+    {
+      "id": "04-copy-of-9a4a5651",
+      "original": "/Users/shayamsundar/Downloads/photo/Copy of 9A4A5651.JPG",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/04-copy-of-9a4a5651-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/04-copy-of-9a4a5651-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/04-copy-of-9a4a5651-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/04-copy-of-9a4a5651-1200.jpg"
+    },
+    {
+      "id": "05-copy-of-9a4a5953",
+      "original": "/Users/shayamsundar/Downloads/photo/Copy of 9A4A5953.JPG",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/05-copy-of-9a4a5953-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/05-copy-of-9a4a5953-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/05-copy-of-9a4a5953-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/05-copy-of-9a4a5953-1200.jpg"
+    },
+    {
+      "id": "06-img-5755",
+      "original": "/Users/shayamsundar/Downloads/photo/IMG_5755.HEIC",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/06-img-5755-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/06-img-5755-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/06-img-5755-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/06-img-5755-1200.jpg"
+    },
+    {
+      "id": "07-img-5795",
+      "original": "/Users/shayamsundar/Downloads/photo/IMG_5795.HEIC",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/07-img-5795-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/07-img-5795-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/07-img-5795-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/07-img-5795-1200.jpg"
+    },
+    {
+      "id": "08-img-6033",
+      "original": "/Users/shayamsundar/Downloads/photo/IMG_6033.JPG",
+      "variants": [
+        {
+          "width": 800,
+          "path": "/gallery-optimized/08-img-6033-800.jpg"
+        },
+        {
+          "width": 1200,
+          "path": "/gallery-optimized/08-img-6033-1200.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "/gallery-optimized/08-img-6033-1600.jpg"
+        }
+      ],
+      "default": "/gallery-optimized/08-img-6033-1200.jpg"
+    }
+  ]
+}
