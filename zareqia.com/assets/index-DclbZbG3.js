@@ -13506,8 +13506,8 @@ function I3(e) {
     : c0()
       ? "https://va.vercel-scripts.com/v1/script.debug.js"
       : e.basePath
-        ? "/javascript-amazon-project/zareqia.com/_vercel/insights/script.js"
-        : "/javascript-amazon-project/zareqia.com/_vercel/insights/script.js";
+        ? "/javascript-amazon-project/zareqia.com/vercel/insights/script.js"
+        : "/javascript-amazon-project/zareqia.com/vercel/insights/script.js";
 }
 function M3(e, t) {
   var n;
@@ -13627,8 +13627,8 @@ function q3(e) {
       : e.dsn
         ? "https://va.vercel-scripts.com/v1/speed-insights/script.js"
         : e.basePath
-          ? "/javascript-amazon-project/zareqia.com/_vercel/speed-insights/script.js"
-          : "/javascript-amazon-project/zareqia.com/_vercel/speed-insights/script.js";
+          ? "/javascript-amazon-project/zareqia.com/vercel/speed-insights/script.js"
+          : "/javascript-amazon-project/zareqia.com/vercel/speed-insights/script.js";
 }
 function H3(e, t) {
   var n;
