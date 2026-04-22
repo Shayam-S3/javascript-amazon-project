@@ -54651,8 +54651,9 @@ const zW = [
                   a.jsx($e, { path: "/contact", element: a.jsx(p9, {}) }),
                   a.jsx($e, { path: "/about", element: a.jsx(g9, {}) }),
                   // Add this above the '*' path
+                  // Change this:
                   a.jsx($e, {
-                    path: "/zareqia.com/invite/index.html",
+                    path: "/javascript-amazon-project/zareqia.com/invite/index.html",
                     element: a.jsx(a9, {}),
                   }),
                   a.jsx($e, { path: "*", element: a.jsx(u9, {}) }),
