@@ -17,7 +17,8 @@
       content="wedding invitation, Shayam Sundar, Sruthi, reception, wedding ceremony"
     />
 
-    <link rel="canonical" href="./" />
+    <!-- ✅ FIXED BASE PATH -->
+    <link rel="canonical" href="/javascript-amazon-project/zareqia.com/" />
 
     <meta property="og:type" content="website" />
     <meta
@@ -28,8 +29,14 @@
       property="og:description"
       content="Join us for our reception on 20 May 2026 and wedding on 21 May 2026 at Raya Mahal, Kumbakonam."
     />
-    <meta property="og:image" content="./placeholder.svg" />
-    <meta property="og:url" content="./invite/demo" />
+    <meta
+      property="og:image"
+      content="/javascript-amazon-project/zareqia.com/placeholder.svg"
+    />
+    <meta
+      property="og:url"
+      content="/javascript-amazon-project/zareqia.com/invite/demo"
+    />
     <meta property="og:site_name" content="Wedding Invitation" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -41,39 +48,12 @@
       name="twitter:description"
       content="Join us for our reception and wedding celebrations at Raya Mahal, Kumbakonam."
     />
-    <meta name="twitter:image" content="./placeholder.svg" />
+    <meta
+      name="twitter:image"
+      content="/javascript-amazon-project/zareqia.com/placeholder.svg"
+    />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Wedding Invitation - Shayam Sundar & Sruthi",
-        "url": "./invite/demo",
-        "description": "Reception and wedding ceremony invitation.",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "operatingSystem": "Web",
-        "creator": {
-          "@type": "Person",
-          "name": "Shayam Sundar"
-        }
-      }
-    </script>
-
-    <style>
-      html,
-      body,
-      #root {
-        background-color: #0f0f0f !important;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-      }
-      body {
-        background-color: #0f0f0f !important;
-      }
-    </style>
-
-    <!-- ✅ FIXED PATHS -->
+    <!-- ✅ FIXED ASSET PATHS -->
     <script
       type="module"
       crossorigin
@@ -84,6 +64,17 @@
       crossorigin
       href="/javascript-amazon-project/zareqia.com/assets/index-Dr78zcxh.css"
     />
+
+    <style>
+      html,
+      body,
+      #root {
+        background-color: #0f0f0f !important;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+    </style>
     ```
   </head>
 
@@ -102,20 +93,20 @@
           end: "2026-05-21T09:00:00+05:30",
         };
 
-        // ✅ FIXED IMAGE PATHS
+        // ✅ FIXED IMAGE PATHS (ABSOLUTE)
         const GALLERY_IMAGES = [
-          "./gallery-optimized/01-copy-of-0c0a9886-1200.jpg",
-          "./gallery-optimized/02-copy-of-0c0a9888-1200.jpg",
-          "./gallery-optimized/03-copy-of-0c0a9894-1200.jpg",
-          "./gallery-optimized/04-copy-of-9a4a5651-1200.jpg",
-          "./gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
-          "./gallery-optimized/06-img-5755-1200.jpg",
-          "./gallery-optimized/07-img-5795-1200.jpg",
-          "./gallery-optimized/08-img-6033-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/01-copy-of-0c0a9886-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/02-copy-of-0c0a9888-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/03-copy-of-0c0a9894-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/04-copy-of-9a4a5651-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/06-img-5755-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/07-img-5795-1200.jpg",
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/08-img-6033-1200.jpg",
         ];
 
         const HERO_BG_IMAGE =
-          "./gallery-optimized/05-copy-of-9a4a5953-1200.jpg";
+          "/javascript-amazon-project/zareqia.com/gallery-optimized/05-copy-of-9a4a5953-1200.jpg";
 
         function toGoogleDate(isoString) {
           const d = new Date(isoString);
