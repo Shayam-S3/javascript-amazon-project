@@ -47861,7 +47861,7 @@ const zW = [
       [w, y] = p.useState(!1),
       v =
         t.backgroundImage ||
-        "javascript-amazon-project/zareqia.com/gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
+        "gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
       j = () => {
         (y(!0), b == null || b());
       };
@@ -49198,7 +49198,7 @@ const zW = [
       },
       k =
         t.backgroundImage ||
-        "javascript-amazon-project/zareqia.com/gallery-optimized/05-copy-of-9a4a5953-1200.jpg";
+        "gallery-optimized/05-copy-of-9a4a5953-1200.jpg";
     return a.jsxs("div", {
       className: "min-h-screen",
       style: {
