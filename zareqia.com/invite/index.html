@@ -139,7 +139,7 @@
         margin-left: 0.12em;
       }
 
-      /* ── Gallery grid — no crop, no distortion, faces fully visible ── */
+      /* ── Gallery grid — no crop, no black bars, natural dimensions ── */
       .our-moments-section {
         padding: 40px 16px !important;
         background: transparent !important;
@@ -148,31 +148,31 @@
         max-height: none !important;
       }
       .our-moments-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        columns: 2;
+        column-gap: 10px;
         max-width: 1040px;
         margin: 0 auto;
       }
       @media (min-width: 768px) {
         .our-moments-grid {
-          grid-template-columns: repeat(3, 1fr);
+          columns: 3;
         }
       }
       .our-moments-grid-item {
-        background: #111;
+        break-inside: avoid;
+        margin-bottom: 10px;
+        background: transparent;
         overflow: hidden;
       }
       .our-moments-grid-item img {
         display: block;
         width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important; /* no crop — full image visible */
-        object-position: center center !important;
-        background: #111 !important;
-        max-height: none !important;
+        height: auto !important; /* natural height — no fixed cell */
+        object-fit: unset !important; /* browser default — no cropping */
         position: static !important;
         opacity: 1 !important;
+        background: transparent !important;
+        max-height: none !important;
       }
 
       /* Hero img swap is handled in JS below */
