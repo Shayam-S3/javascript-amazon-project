@@ -139,32 +139,40 @@
         margin-left: 0.12em;
       }
 
-      /* ── Gallery grid — natural size, no crop, no distortion ── */
+      /* ── Gallery grid — no crop, no distortion, faces fully visible ── */
+      .our-moments-section {
+        padding: 40px 16px !important;
+        background: transparent !important;
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+      }
       .our-moments-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
         max-width: 1040px;
         margin: 0 auto;
-        justify-content: center;
+      }
+      @media (min-width: 768px) {
+        .our-moments-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
       .our-moments-grid-item {
-        /* Each item sizes to its natural image proportions */
-        flex: 0 0 auto;
+        background: #111;
+        overflow: hidden;
       }
       .our-moments-grid-item img {
         display: block;
-        max-width: 100%;
-        height: auto;
-        width: auto;
-        max-height: 420px; /* cap tall portraits so they don't dominate */
-        object-fit: none; /* render at natural dimensions */
-        background: transparent;
-      }
-      @media (max-width: 768px) {
-        .our-moments-grid-item img {
-          max-height: 280px;
-        }
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important; /* no crop — full image visible */
+        object-position: center center !important;
+        background: #111 !important;
+        max-height: none !important;
+        position: static !important;
+        opacity: 1 !important;
       }
 
       /* Hero img swap is handled in JS below */
@@ -277,17 +285,24 @@
           section.insertAdjacentElement("afterend", wrap);
         }
 
-        /* ── Gallery: replace slideshow with natural-size image grid ── */
+        /* ── Gallery: replace React slideshow with full-image grid (no crop) ── */
         function replaceSlideshowWithStaticGrid() {
           const carouselImage = document.querySelector(
             'img[alt^="Wedding moment"]',
           );
           if (!carouselImage) return;
+
+          // Walk up to find the section — may be inside a React wrapper div
           const section = carouselImage.closest("section");
           if (!section || section.dataset.customGallery === "true") return;
-
           section.dataset.customGallery = "true";
+
+          // Fully clear the section including React's fixed-height container
           section.innerHTML = "";
+
+          // Reset any height/overflow constraints React set on the section itself
+          section.className = "our-moments-section";
+          section.removeAttribute("style");
 
           const header = document.createElement("div");
           header.className = "our-moments-header";
@@ -302,7 +317,6 @@
           GALLERY_IMAGES.forEach((src, index) => {
             const item = document.createElement("div");
             item.className = "our-moments-grid-item";
-            // Use <img> with natural sizing — no fixed width/height forced
             item.innerHTML = `<img src="${src}" alt="Our moment ${index + 1}" loading="lazy" />`;
             grid.appendChild(item);
           });
