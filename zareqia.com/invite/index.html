@@ -1,12 +1,10 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wedding Invitation | Shayam Sundar & Sruthi</title>
 
-    ```
     <meta
       name="description"
       content="You are warmly invited to celebrate the wedding of Shayam Sundar and Sruthi."
@@ -17,7 +15,6 @@
       content="wedding invitation, Shayam Sundar, Sruthi, reception, wedding ceremony"
     />
 
-    <!-- ✅ FIXED BASE PATH -->
     <link rel="canonical" href="/javascript-amazon-project/zareqia.com/" />
 
     <meta property="og:type" content="website" />
@@ -53,7 +50,6 @@
       content="/javascript-amazon-project/zareqia.com/placeholder.svg"
     />
 
-    <!-- ✅ FIXED ASSET PATHS -->
     <script
       type="module"
       crossorigin
@@ -74,16 +70,120 @@
         padding: 0;
         min-height: 100vh;
       }
+      body {
+        background-color: #0f0f0f !important;
+      }
+
+      /* ── Save the Date ── */
+      .save-date-wrap {
+        max-width: 720px;
+        margin: 28px auto 0;
+        text-align: center;
+      }
+      .save-date-label {
+        display: block;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: #ffffff !important;
+        margin-bottom: 18px;
+        font-weight: 700;
+        opacity: 1;
+        letter-spacing: 0.26em;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      }
+      .save-date-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .save-date-btn {
+        min-width: 220px;
+        border: 1px solid #c79a3b;
+        color: #d8c39a;
+        text-decoration: none;
+        padding: 14px 18px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+      .save-date-btn.active,
+      .save-date-btn:hover {
+        background: #c58a07;
+        color: #fff6e1;
+      }
+
+      /* ── Gallery header ── */
+      .our-moments-header {
+        text-align: center;
+        margin-bottom: 26px;
+      }
+      .our-moments-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        font-size: 11px;
+        color: rgba(232, 232, 232, 0.56);
+        margin-bottom: 10px;
+      }
+      .our-moments-title {
+        margin: 0;
+        font-size: clamp(34px, 6vw, 56px);
+        color: #f4e8ca;
+        line-height: 1;
+      }
+      .our-moments-title em {
+        color: #c94a65;
+        font-style: italic;
+        margin-left: 0.12em;
+      }
+
+      /* ── Gallery grid — natural size, no crop, no distortion ── */
+      .our-moments-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: 1040px;
+        margin: 0 auto;
+        justify-content: center;
+      }
+      .our-moments-grid-item {
+        /* Each item sizes to its natural image proportions */
+        flex: 0 0 auto;
+      }
+      .our-moments-grid-item img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        max-height: 420px; /* cap tall portraits so they don't dominate */
+        object-fit: none; /* render at natural dimensions */
+        background: transparent;
+      }
+      @media (max-width: 768px) {
+        .our-moments-grid-item img {
+          max-height: 280px;
+        }
+      }
+
+      /* ── Mobile hero background ── */
+      @media (max-width: 768px) {
+        section[data-hero-bg-applied="true"] {
+          background-size: cover !important;
+          background-position: center 20% !important;
+        }
+      }
     </style>
-    ```
   </head>
 
   <body>
     <div id="root"></div>
 
-    ```
     <script>
       (function () {
+        const BASE = "/javascript-amazon-project/zareqia.com";
+
         const EVENT_CONFIG = {
           title: "Wedding: Shayam Sundar & Sruthi",
           location: "Raya Mahal, Kumbakonam",
@@ -93,21 +193,25 @@
           end: "2026-05-21T09:00:00+05:30",
         };
 
-        // ✅ FIXED IMAGE PATHS (ABSOLUTE)
         const GALLERY_IMAGES = [
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/01-copy-of-0c0a9886-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/02-copy-of-0c0a9888-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/03-copy-of-0c0a9894-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/04-copy-of-9a4a5651-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/06-img-5755-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/07-img-5795-1200.jpg",
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/08-img-6033-1200.jpg",
+          BASE + "/gallery-optimized/01-copy-of-0c0a9886-1200.jpg",
+          BASE + "/gallery-optimized/02-copy-of-0c0a9888-1200.jpg",
+          BASE + "/gallery-optimized/03-copy-of-0c0a9894-1200.jpg",
+          BASE + "/gallery-optimized/04-copy-of-9a4a5651-1200.jpg",
+          BASE + "/gallery-optimized/05-copy-of-9a4a5953-1200.jpg",
+          BASE + "/gallery-optimized/06-img-5755-1200.jpg",
+          BASE + "/gallery-optimized/07-img-5795-1200.jpg",
+          BASE + "/gallery-optimized/08-img-6033-1200.jpg",
         ];
 
-        const HERO_BG_IMAGE =
-          "/javascript-amazon-project/zareqia.com/gallery-optimized/05-copy-of-9a4a5953-1200.jpg";
+        // Desktop hero (landscape, wide shot with mirror)
+        const HERO_BG_DESKTOP =
+          BASE + "/gallery-optimized/05-copy-of-9a4a5953-1200.jpg";
+        // Mobile hero (portrait, both faces clearly visible — optimized 67KB)
+        const HERO_BG_MOBILE =
+          BASE + "/gallery-optimized/05-copy-of-9a4a5982-mobile-800.jpg";
 
+        /* ── Calendar helpers ── */
         function toGoogleDate(isoString) {
           const d = new Date(isoString);
           return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
@@ -131,7 +235,10 @@
           const ics = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
+            "PRODID:-//Wedding Invite//EN",
             "BEGIN:VEVENT",
+            "UID:shayam-sruthi-wedding@invite.local",
+            "DTSTAMP:" + toGoogleDate(new Date().toISOString()),
             "DTSTART:" + gStart,
             "DTEND:" + gEnd,
             "SUMMARY:" + EVENT_CONFIG.title,
@@ -144,22 +251,169 @@
           const appleUrl = URL.createObjectURL(
             new Blob([ics], { type: "text/calendar;charset=utf-8" }),
           );
-
           return { googleUrl, appleUrl };
         }
 
-        function applyHeroBackgroundImage() {
-          const section = document.querySelector("section");
-          if (!section) return;
+        /* ── Save the Date buttons ── */
+        function insertSaveDateButtons() {
+          if (document.querySelector(".save-date-wrap")) return;
 
-          section.style.backgroundImage = `url('${HERO_BG_IMAGE}')`;
-          section.style.backgroundSize = "cover";
-          section.style.backgroundPosition = "center";
+          const headings = Array.from(document.querySelectorAll("h2"));
+          const timelineHeading = headings.find((h) =>
+            /Program Timeline|Day Program/i.test(h.textContent || ""),
+          );
+          if (!timelineHeading) return;
+
+          const section = timelineHeading.closest("section");
+          if (!section || !section.parentElement) return;
+
+          const links = createCalendarLinks();
+          const isApple = /iPhone|iPad|iPod|Macintosh/i.test(
+            navigator.userAgent,
+          );
+          const wrap = document.createElement("div");
+          wrap.className = "save-date-wrap";
+          wrap.innerHTML = `
+            <div class="save-date-label">SAVE THE DATE</div>
+            <div class="save-date-buttons">
+              <a class="save-date-btn ${isApple ? "" : "active"}" href="${links.googleUrl}" target="_blank" rel="noopener">GOOGLE CALENDAR</a>
+              <a class="save-date-btn ${isApple ? "active" : ""}" href="${links.appleUrl}" download="wedding-invite.ics">APPLE / ICAL</a>
+            </div>
+          `;
+          section.insertAdjacentElement("afterend", wrap);
         }
 
-        applyHeroBackgroundImage();
+        /* ── Gallery: replace slideshow with natural-size image grid ── */
+        function replaceSlideshowWithStaticGrid() {
+          const carouselImage = document.querySelector(
+            'img[alt^="Wedding moment"]',
+          );
+          if (!carouselImage) return;
+          const section = carouselImage.closest("section");
+          if (!section || section.dataset.customGallery === "true") return;
+
+          section.dataset.customGallery = "true";
+          section.innerHTML = "";
+
+          const header = document.createElement("div");
+          header.className = "our-moments-header";
+          header.innerHTML = `
+            <div class="our-moments-kicker">Moments</div>
+            <h2 class="our-moments-title">Our <em>Gallery</em></h2>
+          `;
+
+          const grid = document.createElement("div");
+          grid.className = "our-moments-grid";
+
+          GALLERY_IMAGES.forEach((src, index) => {
+            const item = document.createElement("div");
+            item.className = "our-moments-grid-item";
+            // Use <img> with natural sizing — no fixed width/height forced
+            item.innerHTML = `<img src="${src}" alt="Our moment ${index + 1}" loading="lazy" />`;
+            grid.appendChild(item);
+          });
+
+          section.appendChild(header);
+          section.appendChild(grid);
+        }
+
+        /* ── Move gallery after venue section ── */
+        function moveGalleryAfterVenue() {
+          const carouselImage = document.querySelector(
+            'img[alt^="Wedding moment"], img[alt^="Our moment"]',
+          );
+          if (!carouselImage) return;
+          const gallerySection = carouselImage.closest("section");
+          if (!gallerySection) return;
+
+          const venueHeading = Array.from(document.querySelectorAll("h2")).find(
+            (h) => /Venue/i.test(h.textContent || ""),
+          );
+          if (!venueHeading) return;
+          const venueSection = venueHeading.closest("section");
+          if (!venueSection || !venueSection.parentElement) return;
+
+          if (venueSection.nextElementSibling !== gallerySection) {
+            venueSection.insertAdjacentElement("afterend", gallerySection);
+          }
+        }
+
+        /* ── Remove unwanted sections ── */
+        function removeUnwantedSections() {
+          const removeTitles = new Set([
+            "Dress Code",
+            "Pre-Wedding Events",
+            "Transportation",
+            "Accommodation",
+            "Gifts",
+          ]);
+          Array.from(document.querySelectorAll("h2")).forEach((h) => {
+            const text = (h.textContent || "").trim();
+            if (removeTitles.has(text)) {
+              const section = h.closest("section");
+              if (section) section.remove();
+            }
+          });
+        }
+
+        /* ── Hero background — desktop vs mobile image ── */
+        function applyHeroBackgroundImage() {
+          let section = null;
+
+          const titleCandidates = Array.from(
+            document.querySelectorAll("h2,h1,p"),
+          );
+          const marker = titleCandidates.find((el) =>
+            /we'?re getting married/i.test((el.textContent || "").trim()),
+          );
+          if (marker) {
+            section = marker.closest("section");
+          }
+
+          if (!section) {
+            const allSections = Array.from(
+              document.querySelectorAll("section"),
+            );
+            section =
+              allSections.find(
+                (sec) => sec.offsetHeight > 300 && sec.offsetTop < 500,
+              ) || allSections[0];
+          }
+
+          if (!section || section.dataset.heroBgApplied === "true") return;
+          section.dataset.heroBgApplied = "true";
+          section.style.backgroundRepeat = "no-repeat";
+          section.style.backgroundSize = "cover";
+          section.style.filter = "brightness(0.85) contrast(1.1)";
+
+          function updateHeroBg() {
+            if (window.innerWidth <= 768) {
+              // Portrait image — both faces visible, fast loading (67KB)
+              section.style.backgroundImage = `url('${HERO_BG_MOBILE}')`;
+              section.style.backgroundPosition = "center 20%";
+            } else {
+              // Original landscape image for desktop — unchanged
+              section.style.backgroundImage = `url('${HERO_BG_DESKTOP}')`;
+              section.style.backgroundPosition = "center center";
+            }
+          }
+          updateHeroBg();
+          window.addEventListener("resize", updateHeroBg);
+        }
+
+        /* ── Run all customisations ── */
+        function applyCustomizations() {
+          removeUnwantedSections();
+          replaceSlideshowWithStaticGrid();
+          moveGalleryAfterVenue();
+          insertSaveDateButtons();
+          applyHeroBackgroundImage();
+        }
+
+        const observer = new MutationObserver(applyCustomizations);
+        observer.observe(document.body, { childList: true, subtree: true });
+        applyCustomizations();
       })();
     </script>
-    ```
   </body>
 </html>
