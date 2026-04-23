@@ -252,13 +252,14 @@
         img[src*="ring"] {
           position: absolute !important;
           left: 50% !important;
-          top: 56% !important;
+          top: 50% !important;
           transform: translate(-50%, -50%) !important;
-          width: 85px !important;
+          width: 120px !important;
           height: auto !important;
-          max-width: 120px !important;
-          z-index: 10 !important;
+          max-width: 150px !important;
+          z-index: 1 !important;
           margin: 0 !important;
+          opacity: 0.8 !important;
         }
 
         /* Ring wrapper containers */
@@ -269,19 +270,20 @@
         [class*="couple"] [class*="ring"] {
           position: absolute !important;
           left: 50% !important;
-          top: 56% !important;
+          top: 50% !important;
           transform: translate(-50%, -50%) !important;
-          z-index: 10 !important;
+          z-index: 1 !important;
         }
 
         [class*="ring-container"] img,
         [class*="Ring-container"] img,
         .ring-wrapper img,
         [class*="couple"] [class*="ring"] img {
-          width: 85px !important;
+          width: 120px !important;
           height: auto !important;
           display: block !important;
           margin: 0 !important;
+          opacity: 0.8 !important;
         }
 
         /* Alternative positioning if needed - adjust top value to move ring near ampersand */
@@ -289,9 +291,10 @@
         [data-testid*="ring"] {
           position: absolute !important;
           left: 50% !important;
-          top: 56% !important;
+          top: 50% !important;
           transform: translate(-50%, -50%) !important;
-          z-index: 10 !important;
+          z-index: 1 !important;
+          opacity: 0.8 !important;
         }
       }
     </style>
