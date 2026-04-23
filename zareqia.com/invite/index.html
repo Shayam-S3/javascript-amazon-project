@@ -357,18 +357,30 @@
         }
 
         /* ── Hero background — desktop vs mobile image ── */
-        function applyHeroBackgroundImage() {
-          let section = null;
+        let heroSection = null;
+        let heroListenerAdded = false;
 
+        function updateHeroBg() {
+          if (!heroSection) return;
+          if (window.innerWidth <= 768) {
+            heroSection.style.backgroundImage = `url('${HERO_BG_MOBILE}')`;
+            heroSection.style.backgroundPosition = "center 20%";
+          } else {
+            heroSection.style.backgroundImage = `url('${HERO_BG_DESKTOP}')`;
+            heroSection.style.backgroundPosition = "center center";
+          }
+        }
+
+        function applyHeroBackgroundImage() {
+          // Find hero section each time (React may not have rendered it yet)
+          let section = null;
           const titleCandidates = Array.from(
             document.querySelectorAll("h2,h1,p"),
           );
           const marker = titleCandidates.find((el) =>
             /we'?re getting married/i.test((el.textContent || "").trim()),
           );
-          if (marker) {
-            section = marker.closest("section");
-          }
+          if (marker) section = marker.closest("section");
 
           if (!section) {
             const allSections = Array.from(
@@ -380,25 +392,26 @@
               ) || allSections[0];
           }
 
-          if (!section || section.dataset.heroBgApplied === "true") return;
-          section.dataset.heroBgApplied = "true";
-          section.style.backgroundRepeat = "no-repeat";
-          section.style.backgroundSize = "cover";
-          section.style.filter = "brightness(0.85) contrast(1.1)";
+          if (!section) return;
 
-          function updateHeroBg() {
-            if (window.innerWidth <= 768) {
-              // Portrait image — both faces visible, fast loading (67KB)
-              section.style.backgroundImage = `url('${HERO_BG_MOBILE}')`;
-              section.style.backgroundPosition = "center 20%";
-            } else {
-              // Original landscape image for desktop — unchanged
-              section.style.backgroundImage = `url('${HERO_BG_DESKTOP}')`;
-              section.style.backgroundPosition = "center center";
-            }
+          // Apply base styles once
+          if (section.dataset.heroBgApplied !== "true") {
+            section.dataset.heroBgApplied = "true";
+            section.style.backgroundRepeat = "no-repeat";
+            section.style.backgroundSize = "cover";
+            section.style.filter = "brightness(0.85) contrast(1.1)";
           }
+
+          heroSection = section;
+
+          // Always apply correct image based on current screen width
           updateHeroBg();
-          window.addEventListener("resize", updateHeroBg);
+
+          // Add resize listener only once
+          if (!heroListenerAdded) {
+            heroListenerAdded = true;
+            window.addEventListener("resize", updateHeroBg);
+          }
         }
 
         /* ── Run all customisations ── */
