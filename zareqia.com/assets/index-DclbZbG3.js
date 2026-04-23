@@ -42189,7 +42189,7 @@ Sangeet – June 14, 7:00 PM at Grand Palace Hall`,
   Td = {
     track1: {
       name: "Beautiful Dream",
-      url: "/javascript-amazon-project/tree/main/zareqia.com/music/track1.mp3",
+      url: "/javascript-amazon-project/zareqia.com/music/track1.mp3",
     },
     track2: { name: "Awakening", url: "/music/track2.mp3" },
     track3: { name: "Chill", url: "/music/track3.mp3" },
