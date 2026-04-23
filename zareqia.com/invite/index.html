@@ -167,13 +167,7 @@
         }
       }
 
-      /* ── Mobile hero background ── */
-      @media (max-width: 768px) {
-        section[data-hero-bg-applied="true"] {
-          background-size: cover !important;
-          background-position: center 20% !important;
-        }
-      }
+      /* Hero img swap is handled in JS below */
     </style>
   </head>
 
@@ -356,61 +350,33 @@
           });
         }
 
-        /* ── Hero background — desktop vs mobile image ── */
-        let heroSection = null;
-        let heroListenerAdded = false;
+        /* ── Hero background — swap the <img> the React bundle renders ── */
+        // The JS bundle renders an <img> tag (not CSS background) for the hero.
+        // We find that img and replace its src based on screen width.
+        let heroImgPatched = false;
 
-        function updateHeroBg() {
-          if (!heroSection) return;
+        function updateHeroImg() {
+          // The hero img is: inside the first section, full-width, object-cover, alt=""
+          const heroImg = document.querySelector(
+            'section img[alt=""][class*="object-cover"], section div.absolute img[alt=""]',
+          );
+          if (!heroImg) return;
+
           if (window.innerWidth <= 768) {
-            heroSection.style.backgroundImage = `url('${HERO_BG_MOBILE}')`;
-            heroSection.style.backgroundPosition = "center 20%";
+            heroImg.src = HERO_BG_MOBILE;
+            heroImg.style.objectPosition = "center 20%";
           } else {
-            heroSection.style.backgroundImage = `url('${HERO_BG_DESKTOP}')`;
-            heroSection.style.backgroundPosition = "center center";
+            heroImg.src = HERO_BG_DESKTOP;
+            heroImg.style.objectPosition = "center center";
           }
         }
 
         function applyHeroBackgroundImage() {
-          // Find hero section each time (React may not have rendered it yet)
-          let section = null;
-          const titleCandidates = Array.from(
-            document.querySelectorAll("h2,h1,p"),
-          );
-          const marker = titleCandidates.find((el) =>
-            /we'?re getting married/i.test((el.textContent || "").trim()),
-          );
-          if (marker) section = marker.closest("section");
+          updateHeroImg();
 
-          if (!section) {
-            const allSections = Array.from(
-              document.querySelectorAll("section"),
-            );
-            section =
-              allSections.find(
-                (sec) => sec.offsetHeight > 300 && sec.offsetTop < 500,
-              ) || allSections[0];
-          }
-
-          if (!section) return;
-
-          // Apply base styles once
-          if (section.dataset.heroBgApplied !== "true") {
-            section.dataset.heroBgApplied = "true";
-            section.style.backgroundRepeat = "no-repeat";
-            section.style.backgroundSize = "cover";
-            section.style.filter = "brightness(0.85) contrast(1.1)";
-          }
-
-          heroSection = section;
-
-          // Always apply correct image based on current screen width
-          updateHeroBg();
-
-          // Add resize listener only once
-          if (!heroListenerAdded) {
-            heroListenerAdded = true;
-            window.addEventListener("resize", updateHeroBg);
+          if (!heroImgPatched) {
+            heroImgPatched = true;
+            window.addEventListener("resize", updateHeroImg);
           }
         }
 
