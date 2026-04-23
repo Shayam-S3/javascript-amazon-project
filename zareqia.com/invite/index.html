@@ -240,6 +240,60 @@
         color: rgba(232, 220, 190, 0.45);
         letter-spacing: 0.05em;
       }
+
+      /* ── Mobile Ring Repositioning ── */
+      @media (max-width: 767px) {
+        /* Target ring images by multiple selectors */
+        img[alt*="ring"],
+        img[alt*="Ring"],
+        [class*="ring"] img,
+        [class*="Ring"] img,
+        [class*="couple"] img[src*="ring"],
+        img[src*="ring"] {
+          position: absolute !important;
+          left: 50% !important;
+          top: 45% !important;
+          transform: translate(-50%, -50%) !important;
+          width: 80px !important;
+          height: auto !important;
+          max-width: 120px !important;
+          z-index: 10 !important;
+          margin: 0 !important;
+        }
+
+        /* Ring wrapper containers */
+        [class*="ring-container"],
+        [class*="Ring-container"],
+        [class*="hero"] [class*="ring"],
+        .ring-wrapper,
+        [class*="couple"] [class*="ring"] {
+          position: absolute !important;
+          left: 50% !important;
+          top: 45% !important;
+          transform: translate(-50%, -50%) !important;
+          z-index: 10 !important;
+        }
+
+        [class*="ring-container"] img,
+        [class*="Ring-container"] img,
+        .ring-wrapper img,
+        [class*="couple"] [class*="ring"] img {
+          width: 80px !important;
+          height: auto !important;
+          display: block !important;
+          margin: 0 !important;
+        }
+
+        /* Alternative positioning if needed - adjust top value to move ring near ampersand */
+        [class*="couples"] img,
+        [data-testid*="ring"] {
+          position: absolute !important;
+          left: 50% !important;
+          top: 48% !important;
+          transform: translate(-50%, -50%) !important;
+          z-index: 10 !important;
+        }
+      }
     </style>
   </head>
 
